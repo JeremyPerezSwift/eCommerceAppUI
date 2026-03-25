@@ -50,47 +50,57 @@ fun HomeScreen() {
             Modifier.fillMaxSize().background(Color.White)
                 .padding(vertical = 30.dp)
         ) {
-            Row(
-                Modifier.fillMaxWidth()
-                    .padding(20.dp),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(
-                    buildAnnotatedString {
-                        withStyle(SpanStyle(color = textOrange)) {
-                            append("Hyper")
-                        }
-                        withStyle(SpanStyle(color = textGreen)) {
-                            append("Mart")
-                        }
-                    },
-                    Modifier,
-                    fontSize = 20.sp,
-                    fontWeight = FontWeight.Bold
-                )
+            HeaderHome()
+        }
+    }
+}
 
-                Spacer(Modifier.weight(1f))
-
-                Row(
-                    Modifier,
-                    horizontalArrangement = Arrangement.spacedBy(15.dp),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Text("Eng")
-
-                    Box(
-                        Modifier.clip(CircleShape)
-                            .background(backgroundGrey)
-                            .padding(5.dp)
-                    ) {
-                        Icon(Icons.Filled.Notifications, null, Modifier, tint = bellOrange)
-                    }
+/// HeaderHome
+@Preview
+@Composable
+private fun HeaderHome() {
+    Row(
+        Modifier
+            .fillMaxWidth()
+            .padding(20.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Text(
+            buildAnnotatedString {
+                withStyle(SpanStyle(color = textOrange)) {
+                    append("Hyper")
                 }
+                withStyle(SpanStyle(color = textGreen)) {
+                    append("Mart")
+                }
+            },
+            Modifier,
+            fontSize = 20.sp,
+            fontWeight = FontWeight.Bold
+        )
+
+        Spacer(Modifier.weight(1f))
+
+        Row(
+            Modifier,
+            horizontalArrangement = Arrangement.spacedBy(15.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text("Eng")
+
+            Box(
+                Modifier
+                    .clip(CircleShape)
+                    .background(backgroundGrey)
+                    .padding(5.dp)
+            ) {
+                Icon(Icons.Filled.Notifications, null, Modifier, tint = bellOrange)
             }
         }
     }
 }
 
+/// BottomBar
 @Preview
 @Composable
 fun BottomBar() {
