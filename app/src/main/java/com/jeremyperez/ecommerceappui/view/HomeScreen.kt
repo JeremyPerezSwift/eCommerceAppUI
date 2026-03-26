@@ -68,46 +68,7 @@ fun HomeScreen() {
         ) {
             HeaderHome()
 
-            Box(
-                Modifier
-                    .fillMaxWidth()
-                    .wrapContentHeight()
-                    .padding(20.dp)
-                    .background(backgroundGrey, RoundedCornerShape(12.dp))
-            ) {
-                Row(
-                    Modifier.wrapContentSize(),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Icon(
-                        Icons.Filled.Search, null, Modifier.padding(start = 15.dp), tint = softColor
-                    )
-
-                    TextField(
-                        value = inputValue,
-                        onValueChange = { it ->
-                            inputValue = it
-                        },
-                        Modifier,
-                        placeholder = {
-                            Text("Search anything...", Modifier, color = softColor)
-                        },
-                        colors = TextFieldDefaults.colors(
-                            focusedIndicatorColor = Color.Transparent,
-                            unfocusedIndicatorColor = Color.Transparent,
-                            focusedContainerColor = Color.Transparent,
-                            unfocusedContainerColor = Color.Transparent,
-                        )
-                    )
-
-                    Icon(
-                        Icons.Filled.Mic,
-                        contentDescription = null,
-                        Modifier,
-                        tint = textGreen
-                    )
-                }
-            }
+            SearchBox(inputValue)
         }
     }
 }
@@ -157,7 +118,50 @@ private fun HeaderHome() {
     }
 }
 
+@Composable
+private fun SearchBox(inputValue: String) {
+    var inputValue1 = inputValue
+    Box(
+        Modifier
+            .fillMaxWidth()
+            .wrapContentHeight()
+            .padding(20.dp)
+            .background(backgroundGrey, RoundedCornerShape(12.dp))
+    ) {
+        Row(
+            Modifier.wrapContentSize(),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Icon(
+                Icons.Filled.Search, null, Modifier.padding(start = 15.dp), tint = softColor
+            )
 
+            TextField(
+                value = inputValue1,
+                onValueChange = { it ->
+                    inputValue1 = it
+                },
+                Modifier,
+                placeholder = {
+                    Text("Search anything...", Modifier, color = softColor)
+                },
+                colors = TextFieldDefaults.colors(
+                    focusedIndicatorColor = Color.Transparent,
+                    unfocusedIndicatorColor = Color.Transparent,
+                    focusedContainerColor = Color.Transparent,
+                    unfocusedContainerColor = Color.Transparent,
+                )
+            )
+
+            Icon(
+                Icons.Filled.Mic,
+                contentDescription = null,
+                Modifier,
+                tint = textGreen
+            )
+        }
+    }
+}
 
 /// BottomBar
 @Preview
