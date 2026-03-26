@@ -13,13 +13,24 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Mic
 import androidx.compose.material.icons.filled.Notifications
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -35,22 +46,68 @@ import androidx.compose.ui.unit.sp
 import com.jeremyperez.ecommerceappui.R
 import com.jeremyperez.ecommerceappui.ui.theme.backgroundGrey
 import com.jeremyperez.ecommerceappui.ui.theme.bellOrange
+import com.jeremyperez.ecommerceappui.ui.theme.softColor
 import com.jeremyperez.ecommerceappui.ui.theme.textGreen
 import com.jeremyperez.ecommerceappui.ui.theme.textOrange
 
 @Preview
 @Composable
 fun HomeScreen() {
+    var inputValue by remember { mutableStateOf("") }
+
     Scaffold(
         Modifier, bottomBar = {
             BottomBar()
         }
     ) { paddingValues ->
         Column(
-            Modifier.fillMaxSize().background(Color.White)
+            Modifier
+                .fillMaxSize()
+                .background(Color.White)
                 .padding(vertical = 30.dp)
         ) {
             HeaderHome()
+
+            Box(
+                Modifier
+                    .fillMaxWidth()
+                    .wrapContentHeight()
+                    .padding(20.dp)
+                    .background(backgroundGrey, RoundedCornerShape(12.dp))
+            ) {
+                Row(
+                    Modifier.wrapContentSize(),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Icon(
+                        Icons.Filled.Search, null, Modifier.padding(start = 15.dp), tint = softColor
+                    )
+
+                    TextField(
+                        value = inputValue,
+                        onValueChange = { it ->
+                            inputValue = it
+                        },
+                        Modifier,
+                        placeholder = {
+                            Text("Search anything...", Modifier, color = softColor)
+                        },
+                        colors = TextFieldDefaults.colors(
+                            focusedIndicatorColor = Color.Transparent,
+                            unfocusedIndicatorColor = Color.Transparent,
+                            focusedContainerColor = Color.Transparent,
+                            unfocusedContainerColor = Color.Transparent,
+                        )
+                    )
+
+                    Icon(
+                        Icons.Filled.Mic,
+                        contentDescription = null,
+                        Modifier,
+                        tint = textGreen
+                    )
+                }
+            }
         }
     }
 }
@@ -100,6 +157,8 @@ private fun HeaderHome() {
     }
 }
 
+
+
 /// BottomBar
 @Preview
 @Composable
@@ -112,11 +171,14 @@ fun BottomBar() {
     )
 
     Box(
-        Modifier.fillMaxWidth().wrapContentHeight(),
+        Modifier
+            .fillMaxWidth()
+            .wrapContentHeight(),
         contentAlignment = Alignment.BottomCenter,
     ) {
         Row(
-            Modifier.fillMaxWidth()
+            Modifier
+                .fillMaxWidth()
                 .background(Color.White)
                 .padding(20.dp),
             horizontalArrangement = Arrangement.spacedBy(60.dp)
