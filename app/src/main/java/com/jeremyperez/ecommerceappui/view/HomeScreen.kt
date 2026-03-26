@@ -68,7 +68,10 @@ fun HomeScreen() {
         ) {
             HeaderHome()
 
-            SearchBox(inputValue)
+            SearchBox(
+                inputValue = inputValue,
+                onValueChange = { inputValue = it }
+            )
         }
     }
 }
@@ -119,7 +122,10 @@ private fun HeaderHome() {
 }
 
 @Composable
-private fun SearchBox(inputValue: String) {
+private fun SearchBox(
+    inputValue: String,
+    onValueChange: (String) -> Unit
+) {
     var inputValue1 = inputValue
     Box(
         Modifier
@@ -137,10 +143,8 @@ private fun SearchBox(inputValue: String) {
             )
 
             TextField(
-                value = inputValue1,
-                onValueChange = { it ->
-                    inputValue1 = it
-                },
+                value = inputValue,
+                onValueChange = onValueChange,
                 Modifier,
                 placeholder = {
                     Text("Search anything...", Modifier, color = softColor)
