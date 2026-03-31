@@ -21,6 +21,8 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.KeyboardArrowRight
+import androidx.compose.material.icons.filled.KeyboardDoubleArrowLeft
 import androidx.compose.material.icons.filled.Mic
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Search
@@ -77,6 +79,24 @@ fun HomeScreen() {
             )
 
             PromotionalCards()
+
+            Row(
+                Modifier
+                    .fillMaxWidth()
+                    .padding(top = 20.dp)
+                    .padding(horizontal = 20.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    "Categories"
+                )
+                Spacer(Modifier.weight(1f))
+                Icon(
+                    Icons.Filled.KeyboardArrowRight,
+                    null,
+                    Modifier.size(24.dp)
+                )
+            }
 
         }
     }
