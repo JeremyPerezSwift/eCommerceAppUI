@@ -88,7 +88,10 @@ fun HomeScreen() {
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    "Categories"
+                    "Categories",
+                    Modifier,
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.W600,
                 )
                 Spacer(Modifier.weight(1f))
                 Icon(
