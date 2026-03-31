@@ -76,35 +76,41 @@ fun HomeScreen() {
                 onValueChange = { inputValue = it }
             )
 
-            Row(
-                Modifier.padding(top = 20.dp)
-                    .horizontalScroll(rememberScrollState()),
-                horizontalArrangement = Arrangement.spacedBy(16.dp)
-            ) {
-                for(i in 1 .. 3)
-                    Box(
-                        Modifier
-                            .padding(start = if(i == 1) 20.dp else 0.dp)
-                            .padding(end = if(i == 3) 20.dp else 0.dp)
-                            .height(180.dp)
-                            .fillMaxWidth(),
-                        contentAlignment = Alignment.CenterStart,
-                    ) {
-                        Image(
-                            painter = painterResource(R.drawable.back_logo),
-                            null
-                        )
-                        Column(
-                            Modifier.padding(start = 12.dp)
-                        ) {
-                            Text("Happy Weekend")
-                            Text("25% Off", Modifier, fontWeight = FontWeight.ExtraBold, fontSize = 22.sp)
-
-                        }
-                    }
-            }
+            PromotionalCards()
 
         }
+    }
+}
+
+@Composable
+private fun PromotionalCards() {
+    Row(
+        Modifier
+            .padding(top = 20.dp)
+            .horizontalScroll(rememberScrollState()),
+        horizontalArrangement = Arrangement.spacedBy(16.dp)
+    ) {
+        for (i in 1..3)
+            Box(
+                Modifier
+                    .padding(start = if (i == 1) 20.dp else 0.dp)
+                    .padding(end = if (i == 3) 20.dp else 0.dp)
+                    .height(180.dp)
+                    .fillMaxWidth(),
+                contentAlignment = Alignment.CenterStart,
+            ) {
+                Image(
+                    painter = painterResource(R.drawable.back_logo),
+                    null
+                )
+                Column(
+                    Modifier.padding(start = 12.dp)
+                ) {
+                    Text("Happy Weekend")
+                    Text("25% Off", Modifier, fontWeight = FontWeight.ExtraBold, fontSize = 22.sp)
+
+                }
+            }
     }
 }
 
