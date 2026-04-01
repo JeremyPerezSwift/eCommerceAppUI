@@ -80,28 +80,33 @@ fun HomeScreen() {
 
             PromotionalCards()
 
-            Row(
-                Modifier
-                    .fillMaxWidth()
-                    .padding(top = 20.dp)
-                    .padding(horizontal = 20.dp),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(
-                    "Categories",
-                    Modifier,
-                    fontSize = 20.sp,
-                    fontWeight = FontWeight.W600,
-                )
-                Spacer(Modifier.weight(1f))
-                Icon(
-                    Icons.Filled.KeyboardArrowRight,
-                    null,
-                    Modifier.size(24.dp)
-                )
-            }
+            ItemTitle(title = "Categories")
 
         }
+    }
+}
+
+@Composable
+private fun ItemTitle(title: String) {
+    Row(
+        Modifier
+            .fillMaxWidth()
+            .padding(top = 20.dp)
+            .padding(horizontal = 20.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Text(
+            title,
+            Modifier,
+            fontSize = 20.sp,
+            fontWeight = FontWeight.W600,
+        )
+        Spacer(Modifier.weight(1f))
+        Icon(
+            Icons.Filled.KeyboardArrowRight,
+            null,
+            Modifier.size(24.dp)
+        )
     }
 }
 
